@@ -132,9 +132,9 @@ const projects = [
     github: "https://github.com/mjotohot/BrgySystem.git",
   },
   {
-    title: "B2B Marketing Agency Website for Personal Trainers",
+    title: "Marketing Agency Website for Personal Trainers",
     description:
-      "A professional marketing agency static website, designed to help personal trainers grow their businesses through digital marketing services.",
+      "A marketing agency static website, designed to help personal trainers grow their businesses through digital marketing services.",
     image: "/images/leadlift.png",
     tags: ["Next", "Tailwind CSS"],
     type: "Client Project",
@@ -182,7 +182,7 @@ projects.forEach((project, index) => {
     "project-card group flex flex-col h-full hover:shadow-lg dark:hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl opacity-0";
 
   card.innerHTML = `
-    <div class="relative w-full h-56 md:h-64 lg:h-72 overflow-hidden rounded-t-xl">
+    <a href="${project.demo || "#"}" target="_blank" rel="noopener noreferrer" class="relative w-full h-56 md:h-64 lg:h-72 overflow-hidden rounded-t-xl block cursor-pointer">
       <img
         src="${project.image}"
         alt="${project.title}"
@@ -219,7 +219,7 @@ projects.forEach((project, index) => {
           ${project.tooltip}
         </div>
       </div>
-    </div>
+    </a>
     <div class="p-6 flex flex-col flex-1">
       <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
         ${project.title}
@@ -236,25 +236,6 @@ projects.forEach((project, index) => {
               </span>`,
           )
           .join("")}
-      </div>
-      <div class="flex gap-3 pt-4">
-        <a
-          href="${project.demo || "#"}"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex-1 inline-block text-center px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-        >
-          > Demo
-        </a>
-        <a
-          href="${project.github || "#"}"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex-1 inline-block text-center px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-        >
-          <i class="devicon-github-original"></i>
-          GitHub
-        </a>
       </div>
     </div>
   `;
