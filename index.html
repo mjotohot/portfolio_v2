@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marion | Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script> -->
+  </head>
+  <body>
+    <div id="loader-overlay" class="loader-overlay" aria-hidden="false">
+      <div class="loader" role="status" aria-label="Loading"></div>
+    </div>
+
+    <div
+      id="scroll-progress"
+      class="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600 z-50"
+      style="width: 0%"
+    ></div>
+
+    <nav
+      class="fixed top-1 left-1/2 -translate-x-1/2 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 z-50 rounded-full max-w-7xl w-[90%]"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3">
+        <div class="flex items-center justify-between">
+          <!-- Mobile Menu Button -->
+          <button
+            id="menu-toggle"
+            class="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+            aria-label="Open menu"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+
+          <!-- Mobile Menu Sidebar -->
+          <div
+            id="mobile-menu"
+            class="fixed top-0 right-0 h-full w-52 sm:w-80 bg-white dark:bg-gray-900 border-l border-gray-200 dark:border-gray-700 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50"
+          >
+            <div class="p-4">
+              <h2
+                class="text-lg font-semibold text-gray-900 dark:text-white mb-5"
+              >
+                Menu
+              </h2>
+              <nav class="flex flex-col gap-6">
+                <a
+                  href="#about"
+                  class="text-lg text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  onclick="closeMenu()"
+                  >About</a
+                >
+                <a
+                  href="#projects"
+                  class="text-lg text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  onclick="closeMenu()"
+                  >Projects</a
+                >
+                <a
+                  href="#contact"
+                  class="text-lg text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  onclick="closeMenu()"
+                  >Contact</a
+                >
+              </nav>
+            </div>
+          </div>
+
+          <!-- Logo -->
+          <a
+            href="#"
+            class="font-semibold text-lg sm:text-md text-gray-900 dark:text-white cursor-pointer"
+            style="font-family: &quot;Debata&quot;, sans-serif"
+          >
+            Marion
+          </a>
+
+          <!-- Desktop Nav -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="#about"
+              class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >About</a
+            >
+            <a
+              href="#experience"
+              class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >Experience</a
+            >
+            <a
+              href="#projects"
+              class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >Projects</a
+            >
+            <a
+              href="#testimonials"
+              class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >Testimonials</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >Contact</a
+            >
+          </div>
+          <a
+            href="https://drive.google.com/file/d/1_voNvxucr68k05Dj5XYNetVOxZPagESj/view?usp=drive_link"
+            target="_blank"
+            class="px-3 py-1 md:px-5 md:py-2 text-xs md:text-sm text-white font-bold rounded-full bg-blue-600 hover:bg-blue-700"
+          >
+            Resume
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="pt-20 md:pt-32 pb-20 px-6 minimal-root">
+      <!-- Particles -->
+      <canvas class="particleCanvas"></canvas>
+      <!-- Accent Lines -->
+      <div class="accent-lines">
+        <div class="hline"></div>
+        <div class="hline"></div>
+        <div class="hline"></div>
+        <div class="vline"></div>
+        <div class="vline"></div>
+        <div class="vline"></div>
+      </div>
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="mb-8">
+          <img
+            src="/images/marion.jpg"
+            alt="image"
+            class="w-60 h-60 md:w-70 md:h-70 rounded-full mx-auto mb-6 object-cover border-4 border-white"
+          />
+        </div>
+        <div class="typewriter">
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
+          ></h1>
+        </div>
+        <p
+          class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed"
+        >
+          I build modern web applications with clean code and thoughtful design.
+          Passionate about creating digital experiences that make a difference.
+        </p>
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto"
+        >
+          <a href="#projects" class="w-full sm:w-auto">
+            <button
+              class="w-full flex gap-2 sm:w-auto font-semibold bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600 cursor-pointer px-4 py-2 rounded-lg text-sm md:text-base"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+                fill="#e3e3e3"
+              >
+                <path
+                  d="M160-240v-480 520-40Zm0 80q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v200h-80v-200H447l-80-80H160v480h200v80H160ZM584-56 440-200l144-144 56 57-87 87 87 87-56 57Zm192 0-56-57 87-87-87-87 56-57 144 144L776-56Z"
+                />
+              </svg>
+              View My Work
+            </button>
+          </a>
+          <a href="#contact" class="w-full sm:w-auto">
+            <button
+              class="w-full flex gap-2 sm:w-auto border border-white text-white hover:bg-white hover:text-black hover:font-bold cursor-pointer px-4 py-2 rounded-lg text-sm md:text-base"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+                fill="#e3e3e3"
+              >
+                <path
+                  d="M480-400q33 0 56.5-23.5T560-480q0-33-23.5-56.5T480-560q-33 0-56.5 23.5T400-480q0 33 23.5 56.5T480-400ZM320-240h320v-23q0-24-13-44t-36-30q-26-11-53.5-17t-57.5-6q-30 0-57.5 6T369-337q-23 10-36 30t-13 44v23ZM720-80H240q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80Zm0-80v-446L526-800H240v640h480Zm-480 0v-640 640Z"
+                />
+              </svg>
+              Get In Touch
+            </button>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="pt-15 md:pt-29 pb-20 bg-white dark:bg-gray-900">
+      <div class="max-w-4xl mx-auto px-6">
+        <h2
+          class="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center tracking-wide"
+        >
+          About Me
+        </h2>
+        <div class="grid md:grid-cols-2 gap-20 items-center">
+          <div>
+            <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+              As a junior web developer, I have experience building responsive,
+              user-focused web applications for diverse clients. I excel at
+              translating requirements into clean, maintainable code using
+              modern tools like React, Next.js, Supabase, and TanStack Query to
+              deliver efficient, scalable solutions.
+            </p>
+            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              I'm passionate about creating intuitive user experiences and
+              staying ahead of the curve with technologies like Vue, Laravel,
+              Zustand, Pinia and AI-assisted development tools. When not coding,
+              I enjoy exploring new workflows, contributing to open-source
+              projects, and deploying seamless apps on platforms like Vercel.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <!-- Frontend -->
+              <span class="px-4 py-2 text-white text-sm font-medium">
+                <i class="devicon-react-original colored"></i>
+                React</span
+              >
+              <span class="px-4 py-2 text-white text-sm font-medium">
+                <i class="devicon-nextjs-plain"></i>
+                Next.js</span
+              >
+              <span class="px-4 py-2 text-white text-sm font-medium">
+                <i class="devicon-javascript-plain colored"></i>
+                JavaScript</span
+              >
+              <span class="px-4 py-2 text-white text-sm font-medium">
+                <i class="devicon-vuejs-plain colored"></i>
+                Vue</span
+              >
+              <span class="px-4 py-2 text-white text-sm font-medium">
+                <i class="devicon-typescript-plain colored"></i>
+                TypeScript</span
+              >
+              <span
+                class="px-4 py-2 text-white rounded-full text-sm font-medium"
+              >
+                <i class="devicon-tailwindcss-original colored"></i>
+                Tailwind CSS</span
+              >
+              <!-- Backend -->
+              <span class="px-4 py-2 text-white text-sm font-medium">
+                <i class="devicon-supabase-plain colored"></i>
+                Supabase</span
+              >
+              <span class="px-4 py-2 text-white text-sm font-medium">
+                <i class="devicon-laravel-original colored"></i>
+                Laravel</span
+              >
+              <span class="px-4 py-2 text-white text-sm font-medium">
+                <i class="devicon-mysql-original colored"></i>
+                MySQL</span
+              >
+            </div>
+          </div>
+          <div class="relative">
+            <img
+              width="500"
+              height="100"
+              src="/images/jotohot.jpg"
+              alt="Developer workspace"
+              class="rounded-lg shadow-lg object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section
+      id="experience"
+      class="pt-15 md:pt-25 pb-20 bg-gray-50 dark:bg-gray-800"
+    >
+      <div class="max-w-4xl mx-auto px-6">
+        <h2
+          class="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center tracking-wide"
+        >
+          Freelance & Academic Experience
+        </h2>
+
+        <div class="space-y-8">
+          <!-- Freelance Experience -->
+          <div class="experience-item flex gap-6 opacity-0 animate-fade-in">
+            <div class="flex flex-col items-center">
+              <div class="w-4 h-4 bg-blue-600 rounded-full mt-1"></div>
+              <div
+                class="w-1 h-24 bg-gradient-to-b from-blue-600 to-purple-600"
+              ></div>
+            </div>
+            <div class="pb-8">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                Freelance Web Developer
+              </h3>
+              <p class="text-purple-600 dark:text-purple-400 font-medium mb-2">
+                2024 – 2025
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                Designed and developed web applications for student capstone
+                projects, academic systems, and small business clients. Focused
+                on building responsive, user-friendly interfaces and
+                implementing practical backend functionality using modern web
+                technologies.
+              </p>
+              <ul
+                class="mt-3 list-disc list-inside text-gray-600 dark:text-gray-300 text-sm space-y-1"
+              >
+                <li>
+                  Built responsive applications using React, Next.js, and
+                  Tailwind CSS
+                </li>
+                <li>
+                  Implemented authentication, dashboards, and CRUD features
+                  using Supabase and REST APIs
+                </li>
+                <li>
+                  Collaborated with clients through revisions, feedback, and
+                  deadlines
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bachelor's Degree -->
+          <div
+            class="experience-item flex gap-6 opacity-0 animate-fade-in"
+            style="animation-delay: 0.2s"
+          >
+            <div class="flex flex-col items-center">
+              <div class="w-4 h-4 bg-purple-600 rounded-full mt-1"></div>
+              <div
+                class="w-1 h-24 bg-gradient-to-b from-purple-600 to-pink-600"
+              ></div>
+            </div>
+            <div class="pb-8">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                Bachelor of Science in Information Technology
+              </h3>
+              <p class="text-purple-600 dark:text-purple-400 font-medium mb-2">
+                Graduated 2024
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                Completed coursework in software development, web technologies,
+                databases, and systems analysis. Built academic projects
+                including capstone systems that focused on solving real-world
+                problems.
+              </p>
+            </div>
+          </div>
+
+          <!-- Journey Start -->
+          <div
+            class="experience-item flex gap-6 opacity-0 animate-fade-in"
+            style="animation-delay: 0.4s"
+          >
+            <div class="flex flex-col items-center">
+              <div class="w-4 h-4 bg-pink-600 rounded-full mt-1"></div>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                Started Web Development Journey
+              </h3>
+              <p class="text-purple-600 dark:text-purple-400 font-medium mb-2">
+                2021
+              </p>
+              <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                Began learning web development fundamentals with HTML, CSS, and
+                JavaScript. Progressed through self-study and academic projects,
+                gradually building full web applications.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section
+      id="projects"
+      class="pt-15 md:pt-25 pb-20 bg-white dark:bg-gray-900"
+    >
+      <div class="max-w-6xl mx-auto px-6">
+        <h2
+          class="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center tracking-wide"
+        >
+          All Projects
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section
+      id="testimonials"
+      class="pt-15 md:pt-25 pb-20 bg-white dark:bg-gray-900"
+    >
+      <div class="max-w-full mx-auto px-6">
+        <h2
+          class="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center tracking-wide"
+        >
+          What Clients Say
+        </h2>
+        <div class="relative overflow-hidden">
+          <div
+            id="testimonials-carousel"
+            class="flex gap-6 animate-scroll"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="pt-15 md:pt-25 pb-20 bg-gray-50 dark:bg-gray-800"
+    >
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <h2
+          class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8"
+        >
+          Let's Work Together
+        </h2>
+        <p
+          class="text-base sm:text-xl text-gray-600 dark:text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed"
+        >
+          I'm always interested in new opportunities and exciting projects.
+          Let's discuss how we can bring your ideas to life.
+        </p>
+        <div
+          class="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-6 justify-center items-center"
+        >
+          <a
+            href="mailto:marionjotohot@gmail.com"
+            class="w-full sm:w-auto inline-flex items-center justify-center border border-gray-300 dark:border-gray-600 px-4 py-2 text-white rounded-lg text-md font-medium"
+          >
+            <svg
+              class="mr-2 h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              ></path>
+            </svg>
+            marionjotohot@gmail.com
+          </a>
+          <a
+            href="https://m.me/marion.jotohot.2025"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2 text-white bg-blue-600 rounded-lg text-md font-medium"
+          >
+            <svg class="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+              />
+            </svg>
+            m.me/marion.jotohot.2025
+          </a>
+          <a
+            href="https://wa.me/HEBTCLSUR4Q5A1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2 border border-green-400 bg-green-300 text-white rounded-lg text-md font-medium"
+          >
+            <svg class="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.658 1.43 5.63 1.432h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+              />
+            </svg>
+            wa.me/HEBTCLSUR4Q5A1
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="py-8 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700"
+    >
+      <p
+        class="flex flex-col items-center gap-2 text-sm sm:flex-row sm:justify-center sm:text-base text-gray-600 dark:text-gray-400"
+      >
+        <span
+          >Hi! I'm Marion and I built this with
+          <span class="inline-flex gap-2"
+            >HTML, Tailwind CSS, JavaScript</span
+          ></span
+        >
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="animate.js"></script>
+  </body>
+</html>
