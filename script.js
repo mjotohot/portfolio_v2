@@ -192,11 +192,11 @@ function createDemoModal() {
   modal.className =
     "fixed inset-0 bg-black/60 bg-opacity-50 flex items-center justify-center z-50 hidden";
   modal.innerHTML = `
-    <div class="bg-white dark:bg-gray-800 rounded-lg p-8 max-w-md w-full mx-4 shadow-xl">
-      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+    <div class="bg-gray-800 rounded-lg p-8 max-w-md w-full mx-4 shadow-xl border border-gray-700">
+      <h3 class="text-2xl font-bold text-white mb-4">
         Demo Not Available
       </h3>
-      <p class="text-gray-600 dark:text-gray-300 mb-6">
+      <p class="text-gray-300 mb-6">
         This project demo is not publicly available at the moment. Contact me for more information.
       </p>
       <button
@@ -215,7 +215,7 @@ const projectsContainer = document.querySelector("#projects .grid");
 projects.forEach((project, index) => {
   const card = document.createElement("div");
   card.className =
-    "project-card group flex flex-col h-full hover:shadow-lg dark:hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl opacity-0";
+    "project-card group flex flex-col h-full hover:shadow-lg dark:hover:shadow-xl transition-shadow duration-300 bg-gray-800 border border-gray-700 rounded-xl opacity-0";
 
   const imageLink = document.createElement("a");
   imageLink.className =
@@ -277,17 +277,17 @@ projects.forEach((project, index) => {
   const content = document.createElement("div");
   content.className = "p-6 flex flex-col flex-1";
   content.innerHTML = `
-    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+    <h3 class="text-xl font-semibold text-white mb-2">
       ${project.title}
     </h3>
-    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+    <p class="text-gray-300 mb-4 text-sm">
       ${project.description}
     </p>
     <div class="flex flex-wrap gap-2 mt-auto mb-4">
       ${project.tags
         .map(
           (tag) =>
-            `<span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded text-xs">
+            `<span class="px-2 py-1 bg-gray-700 text-gray-100 rounded text-xs">
               ${tag}
             </span>`,
         )
@@ -338,12 +338,12 @@ if (testimonialCarousel) {
     const card = document.createElement("div");
     card.className = "testimonial-item flex-shrink-0 w-80";
     card.innerHTML = `
-      <div class="testimonial-card bg-gray-50 dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow h-full flex flex-col">
+      <div class="testimonial-card bg-gray-800 p-8 rounded-lg border border-gray-700 hover:shadow-lg transition-shadow h-full flex flex-col">
           <div class="mb-4">
-            <h4 class="font-semibold text-gray-900 dark:text-white">${testimonial.name}</h4>
-            <p class="text-sm text-gray-600 dark:text-gray-400">${testimonial.role}</p>
+            <h4 class="font-semibold text-white">${testimonial.name}</h4>
+            <p class="text-sm text-gray-400">${testimonial.role}</p>
           </div>
-        <p class="text-gray-600 dark:text-gray-300 italic flex-1">"${testimonial.testimonial}"</p>
+        <p class="text-gray-300 italic flex-1">"${testimonial.testimonial}"</p>
       </div>
     `;
     testimonialCarousel.appendChild(card);
@@ -354,12 +354,12 @@ if (testimonialCarousel) {
     const card = document.createElement("div");
     card.className = "testimonial-item flex-shrink-0 w-80";
     card.innerHTML = `
-      <div class="testimonial-card bg-gray-50 dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow h-full flex flex-col">
+      <div class="testimonial-card bg-gray-800 p-8 rounded-lg border border-gray-700 hover:shadow-lg transition-shadow h-full flex flex-col">
           <div class="mb-4">
-            <h4 class="font-semibold text-gray-900 dark:text-white">${testimonial.name}</h4>
-            <p class="text-sm text-gray-600 dark:text-gray-400">${testimonial.role}</p>
+            <h4 class="font-semibold text-white">${testimonial.name}</h4>
+            <p class="text-sm text-gray-400">${testimonial.role}</p>
           </div>
-        <p class="text-gray-600 dark:text-gray-300 italic flex-1">"${testimonial.testimonial}"</p>
+        <p class="text-gray-300 italic flex-1">"${testimonial.testimonial}"</p>
       </div>
     `;
     testimonialCarousel.appendChild(card);
